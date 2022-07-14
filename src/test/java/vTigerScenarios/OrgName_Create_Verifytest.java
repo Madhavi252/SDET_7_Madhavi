@@ -13,6 +13,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.Object.Resource.CreateOrgPage;
+import com.Object.Resource.HomePage;
+import com.Object.Resource.LoginPage;
+import com.Object.Resource.OrganizationInfoPage;
 import com.VTIGER.generic.FakeData;
 import com.VTIGER.generic.PropertyFile;
 import com.VTIGER.generic.WebDriverUtility;
@@ -23,7 +27,7 @@ public class OrgName_Create_Verifytest {
 
 	static WebDriver driver = null;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, Throwable {
 
 		PropertyFile propertyFile = new PropertyFile();
 		String url = propertyFile.readDatafromPropfile("url");
@@ -36,7 +40,7 @@ public class OrgName_Create_Verifytest {
 		System.out.println(pW);
 
 		FakeData fakeData = new FakeData();
-		String compname = fakeData.industryName();
+		String orgname = fakeData.industryName();
 
 		if(browser.equalsIgnoreCase("chrome")) {
 
@@ -66,14 +70,25 @@ public class OrgName_Create_Verifytest {
 		
 
 		driver.get(url);
+		
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.getUsernametextbox().sendKeys(uN);
+		loginpage.getPasswordtextbox().sendKeys(pW);
+		loginpage.getLoginbtn().click();
+		
+		HomePage homepage = new HomePage(driver);
+		homepage.getOrglinkbtn().click();
+		
+		OrganizationInfoPage organizationInfoPage = new OrganizationInfoPage(driver);
+		organizationInfoPage.getCreateorglinkbtn().click();
+	
+		
+		
+		CreateOrgPage createOrgPage = new CreateOrgPage(driver);
+		
+		Thread.sleep(5000);
+		createOrgPage.getOrgNametextbox().sendKeys(orgname);
 
-		driver.findElement(By.name("user_name")).sendKeys(uN, Keys.TAB, pW, Keys.ENTER);
-
-		driver.findElement(By.xpath("//td[@class='tabSelected']")).click();
-
-		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
-
-		driver.findElement(By.name("accountname")).sendKeys(compname);
 
 		WebElement ind = driver.findElement(By.name("industry"));
 
@@ -113,3 +128,24 @@ public class OrgName_Create_Verifytest {
 //act.moveToElement(ele).perform();
 //Random ran = new Random(); 
 //		int i = ran.nextInt(1000);
+//driver.findElement(By.name("user_name")).sendKeys(uN, Keys.TAB, pW, Keys.ENTER);
+//
+//driver.findElement(By.xpath("//td[@class='tabSelected']")).click();
+//
+//driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
+//
+//driver.findElement(By.name("accountname")).sendKeys(compname);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
