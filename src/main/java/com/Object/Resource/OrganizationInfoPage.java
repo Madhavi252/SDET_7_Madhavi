@@ -36,7 +36,7 @@ public class OrganizationInfoPage {
 	 
 	 
 	@FindBy(name="submit")
-	private WebElement searchorgbtn;
+	public WebElement searchorgbtn;
 
 
 	@FindBy(xpath="//a[@title='Organizations']")
@@ -46,5 +46,35 @@ public class OrganizationInfoPage {
 	public WebElement getSearchedorgname() {
 		return searchedorgname;
 	}
+	
+	@FindBy(xpath="//option[text()='Organization Name']")
+	private WebElement orgnameDD;
+	
+	public WebElement getOrgnameDD() {
+		return orgnameDD;
+	}
 	 
+	@FindBy(name="selected_id")
+	private WebElement checkBox;
+	
+	public WebElement getCheckBox() {
+		return checkBox;
+	}
+	
+	@FindBy(xpath="//input[@class='crmbutton small delete']")
+	private WebElement deletebtn;
+	
+	public WebElement getDeletebtn() {
+		return deletebtn;
+	}
+	
+	
 }
+
+
+
+
+
+
+
+

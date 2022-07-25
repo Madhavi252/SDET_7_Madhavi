@@ -1,95 +1,35 @@
 package vTigerScenarios;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 import com.Object.Resource.CreateOrgPage;
 import com.Object.Resource.HomePage;
-import com.Object.Resource.LoginPage;
 import com.Object.Resource.OrganizationInfoPage;
+import com.VTIGER.generic.BaseClassUtiity;
 import com.VTIGER.generic.FakeData;
-import com.VTIGER.generic.PropertyFile;
-import com.VTIGER.generic.WebDriverUtility;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Org_Nametest {
+public class Org_Nametest extends BaseClassUtiity {
 
-	static WebDriver driver = null; 
-
-	public static void main(String[] args) throws Throwable {
-
-		PropertyFile propertyFile = new PropertyFile();
-		String url = propertyFile.readDatafromPropfile("url");
-		String browser = propertyFile.readDatafromPropfile("browser");
-		System.out.println(browser);
-		String uN = propertyFile.readDatafromPropfile("username");
-		System.out.println(uN);
-		String pW = propertyFile.readDatafromPropfile("password");
-		System.out.println(pW);
+	@Test
+	public void orgNameCreate() throws Throwable {
 
 		FakeData fakeData = new FakeData();
-		String orgname = fakeData.name();
-		
-		if(browser.equalsIgnoreCase("chrome")) {
+		String orgname = fakeData.name();		
 
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-
-		}
-
-		else if(browser.equalsIgnoreCase("firefox")) {
-
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-		}
-
-		else {
-
-			System.out.println("browser not found");
-		}
-		
-		WebDriverUtility driverutility = new WebDriverUtility(driver);
-		driverutility.pagewait();
-		driverutility.maximizewindow();
-		
-		driver.get(url);
-		
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.getUsernametextbox().sendKeys(uN);
-		loginpage.getPasswordtextbox().sendKeys(pW);
-		loginpage.getLoginbtn().click();
-		
 		HomePage homepage = new HomePage(driver);
 		homepage.getOrglinkbtn().click();
-		
+
 		OrganizationInfoPage organizationInfoPage = new OrganizationInfoPage(driver);
 		organizationInfoPage.getCreateorglinkbtn().click();
-	
-		
-		
+
 		CreateOrgPage createOrgPage = new CreateOrgPage(driver);
-		
-		Thread.sleep(5000);
+
+		//Thread.sleep(5000);
 		createOrgPage.getOrgNametextbox().sendKeys(orgname);
+		//Thread.sleep(7000);
 		createOrgPage.getSavebtn().click();
-		
-		Thread.sleep(2000);
-		
-		WebElement ele = createOrgPage.getImage(); 
-		
-		driverutility.moveToElement(ele);
-		
-		homepage.getSignoutlink().click();
-		
-		driverutility.closeBrowser();
+
 	}
 
 }
@@ -107,12 +47,44 @@ public class Org_Nametest {
 //driver.findElement(By.xpath("//a[text()='Sign Out']")).click();
 //WebElement ele = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
 
+//PropertyFile propertyFile = new PropertyFile();
+//String url = propertyFile.readDatafromPropfile("url");
+//String browser = propertyFile.readDatafromPropfile("browser");
+//System.out.println(browser);
+//String uN = propertyFile.readDatafromPropfile("username");
+//System.out.println(uN);
+//String pW = propertyFile.readDatafromPropfile("password");
+//System.out.println(pW);
+//
 
+//
+//if(browser.equalsIgnoreCase("chrome")) {
+//
+//	WebDriverManager.chromedriver().setup();
+//	driver = new ChromeDriver();
+//
+//}
+//
+//else if(browser.equalsIgnoreCase("firefox")) {
+//
+//	WebDriverManager.firefoxdriver().setup();
+//	driver = new FirefoxDriver();
+//}
+//
+//else {
+//
+//	System.out.println("browser not found");
+//}
+//driver.get(url);
+//LoginPage loginpage = new LoginPage(driver);
+//loginpage.getUsernametextbox().sendKeys(uN);
+//loginpage.getPasswordtextbox().sendKeys(pW);
+//loginpage.getLoginbtn().click();
+//homepage.getSignoutlink().click();
+//
+//driverutility.closeBrowser();
+//WebElement ele = createOrgPage.getImage(); 
 
-
-
-
-
-
+//static WebDriver driver = null; 
 
 
