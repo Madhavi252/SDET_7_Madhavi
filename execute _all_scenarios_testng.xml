@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="vTigerScenarios.OrgName_Create_Verifytest"/>
+      <class name="vTigerScenarios.Contact_Create_Verifytest"/>
+      <class name="vTigerScenarios.Org_Name_Create_Deletetest"/>
+      <class name="vTigerScenarios.Campagin_Name_Create_Deletetest"/>
+      <class name="vTigerScenarios.Org_Nametest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

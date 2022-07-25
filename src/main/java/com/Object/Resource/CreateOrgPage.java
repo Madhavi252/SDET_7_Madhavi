@@ -38,6 +38,15 @@ public class CreateOrgPage {
 		return image;
 	}
 	
+	@FindBy(name="industry")
+	private WebElement industry;
+
+	public WebElement getIndustry() {
+		return industry;
+	}
+	
+	@FindBy(xpath="//span[@class='dvHeaderText']")
+	public WebElement orgVerifyText;
 	
 	
 

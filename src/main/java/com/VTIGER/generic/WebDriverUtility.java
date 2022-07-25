@@ -60,7 +60,7 @@ public class WebDriverUtility {
 	public void moveToElement(WebElement element)
 	{
 		Actions action = new Actions(driver);
-		action.moveToElement(element).build().perform();
+		action.moveToElement(element).click().build().perform();
 	}
 	
 	public void dragAndDrop(WebElement source, WebElement target) {
