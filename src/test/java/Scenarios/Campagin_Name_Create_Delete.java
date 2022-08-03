@@ -1,7 +1,5 @@
 package Scenarios;
 
-import java.io.IOException;
-import java.lang.module.FindException;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
@@ -16,10 +14,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.VTIGER.generic.FakeData;
 import com.VTIGER.generic.PropertyFile;
-import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
-import com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Campagin_Name_Create_Delete {

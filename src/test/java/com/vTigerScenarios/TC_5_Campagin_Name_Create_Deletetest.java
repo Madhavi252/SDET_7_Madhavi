@@ -1,40 +1,27 @@
-package vTigerScenarios;
+  package com.vTigerScenarios;
 
-import java.io.IOException;
-import java.lang.module.FindException;
-import java.time.Duration;
-
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.Object.Resource.CampaginInfoPage;
 import com.VTIGER.generic.BaseClassUtiity;
 import com.VTIGER.generic.FakeData;
-import com.VTIGER.generic.PropertyFile;
+import com.VTIGER.generic.RetryAnalyzer;
 import com.VTIGER.generic.WebDriverUtility;
-import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
-import com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-public class Campagin_Name_Create_Deletetest extends BaseClassUtiity {
 
 
-	@Test
-	public void campaginCreate() throws InterruptedException, Throwable {
+//@Listeners(com.VTIGER.generic.ListenerImplementations.class)
+public class TC_5_Campagin_Name_Create_Deletetest extends BaseClassUtiity {
+
+
+	@Test(groups= {"smoke","regression"},retryAnalyzer = RetryAnalyzer.class)
+	public void campaginCreateTest() throws InterruptedException, Throwable {
 
 		FakeData fakeData = new FakeData();
 		String campname = fakeData.name();
-		String name = fakeData.name();
+		//String name = fakeData.name();
 
 		WebDriverUtility driverutility = new WebDriverUtility(driver);
 
@@ -80,9 +67,11 @@ public class Campagin_Name_Create_Deletetest extends BaseClassUtiity {
 
 		driverutility.acceptAlert();
 		
-		Thread.sleep(2000);
+		Thread.sleep(5000);
+		
+		Assert.assertEquals(true, true);
 
-
+		System.out.println("Campagin created, saved, verified and created");
 	}
 
 }

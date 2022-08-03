@@ -46,7 +46,11 @@ public class CreateOrgPage {
 	}
 	
 	@FindBy(xpath="//span[@class='dvHeaderText']")
-	public WebElement orgVerifyText;
+	private WebElement orgVerifyText;
+
+	public WebElement getOrgVerifyText() {
+		return orgVerifyText;
+	}
 	
 	
 

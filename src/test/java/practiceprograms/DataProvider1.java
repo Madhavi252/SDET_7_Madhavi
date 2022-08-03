@@ -1,4 +1,4 @@
-package com.VTIGER.generic;
+package practiceprograms;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

@@ -1,31 +1,24 @@
-package vTigerScenarios;
+package com.vTigerScenarios;
 
-import java.time.Duration;
 import java.util.Set;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.Object.Resource.ContactInfoPage;
 import com.VTIGER.generic.BaseClassUtiity;
 import com.VTIGER.generic.FakeData;
-import com.VTIGER.generic.PropertyFile;
+import com.VTIGER.generic.RetryAnalyzer;
 import com.VTIGER.generic.WebDriverUtility;
-import com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Contact_Create_Verifytest extends BaseClassUtiity {
+//@Listeners(com.VTIGER.generic.ListenerImplementations.class)
+public class TC_4_Contact_Create_Verifytest extends BaseClassUtiity {
 
-	@Test
+	@Test(groups="regression",retryAnalyzer = RetryAnalyzer.class)
 
-	public void contactCreate() throws Throwable {
+	public void contactCreateTest() throws Throwable {
 
 		FakeData fakeData = new FakeData();
 		String fname = fakeData.firstName();
@@ -64,9 +57,9 @@ public class Contact_Create_Verifytest extends BaseClassUtiity {
 		String data= contactInfoPage.getContactVerifyText().getText();
 
 		if (data.contains(fname))
-			System.out.println("contact saved");
+			System.out.println("Contact created and saved...");
 		else
-			System.out.println("contact not saved");
+			System.out.println("Contact not created and saved");
 
 	}
 

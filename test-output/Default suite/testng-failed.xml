@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="vTigerScenarios.Campagin_Name_Create_Deletetest">
+      <class name="com.vTigerScenarios.TC_3_Org_Name_Create_Deletetest">
         <methods>
           <include name="loginPage"/>
           <include name="logoutPage"/>
           <include name="closeConnectDataBase"/>
           <include name="connectDataBase"/>
           <include name="closeBrowser"/>
-          <include name="campaginCreate"/>
+          <include name="deleteOrgNameTest"/>
           <include name="lanuchBrowser"/>
         </methods>
-      </class> <!-- vTigerScenarios.Campagin_Name_Create_Deletetest -->
+      </class> <!-- com.vTigerScenarios.TC_3_Org_Name_Create_Deletetest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

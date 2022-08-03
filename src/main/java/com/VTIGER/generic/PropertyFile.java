@@ -23,7 +23,7 @@ public class PropertyFile
 
 	public String readDatafromPropfile(String key) throws IOException 
 	{
-		FileInputStream fis = new FileInputStream("../SDET7_MADHAVI/src/test/java/notepad.properties");
+		FileInputStream fis = new FileInputStream(IAutoconsts.propertyFile);
 
 		Properties prop = new Properties();
 

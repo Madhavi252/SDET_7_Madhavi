@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite parallel="classes" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.VTIGER.generic.ListenerImplementations"/>
+  </listeners>
+  <test thread-count="5" parallel="classes" name="Test(failed)">
+    <groups>
+      <run>
+        <include name="regression"/>
+      </run>
+    </groups>
     <classes>
-      <class name="vTigerScenarios.OrgName_Create_Verifytest">
+      <class name="com.vTigerScenarios.TC_5_Campagin_Name_Create_Deletetest">
         <methods>
-          <include name="loginPage"/>
-          <include name="logoutPage"/>
-          <include name="closeConnectDataBase"/>
-          <include name="connectDataBase"/>
-          <include name="closeBrowser"/>
-          <include name="orgNameVerify"/>
-          <include name="lanuchBrowser"/>
+          <include name="campaginCreateTest"/>
         </methods>
-      </class> <!-- vTigerScenarios.OrgName_Create_Verifytest -->
+      </class> <!-- com.vTigerScenarios.TC_5_Campagin_Name_Create_Deletetest -->
+      <class name="com.vTigerScenarios.TC_3_Org_Name_Create_Deletetest">
+        <methods>
+          <include name="deleteOrgNameTest"/>
+        </methods>
+      </class> <!-- com.vTigerScenarios.TC_3_Org_Name_Create_Deletetest -->
+      <class name="com.vTigerScenarios.TC_4_Contact_Create_Verifytest">
+        <methods>
+          <include name="contactCreateTest"/>
+        </methods>
+      </class> <!-- com.vTigerScenarios.TC_4_Contact_Create_Verifytest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

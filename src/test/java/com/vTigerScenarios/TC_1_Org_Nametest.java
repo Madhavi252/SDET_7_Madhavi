@@ -1,5 +1,7 @@
-package vTigerScenarios;
+package com.vTigerScenarios;
 
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.Object.Resource.CreateOrgPage;
@@ -7,16 +9,18 @@ import com.Object.Resource.HomePage;
 import com.Object.Resource.OrganizationInfoPage;
 import com.VTIGER.generic.BaseClassUtiity;
 import com.VTIGER.generic.FakeData;
+import com.VTIGER.generic.RetryAnalyzer;
 
 
-public class Org_Nametest extends BaseClassUtiity {
+@Listeners(com.VTIGER.generic.ListenerImplementations.class)
+public class TC_1_Org_Nametest extends BaseClassUtiity {
 
-	@Test
-	public void orgNameCreate() throws Throwable {
+	@Test(groups= "smoke", retryAnalyzer = RetryAnalyzer.class)
+	public void orgNameCreateTest() throws Throwable {
 
 		FakeData fakeData = new FakeData();
 		String orgname = fakeData.name();		
-
+		//Assert.assertFalse(true);
 		HomePage homepage = new HomePage(driver);
 		homepage.getOrglinkbtn().click();
 
@@ -29,7 +33,10 @@ public class Org_Nametest extends BaseClassUtiity {
 		createOrgPage.getOrgNametextbox().sendKeys(orgname);
 		//Thread.sleep(7000);
 		createOrgPage.getSavebtn().click();
-
+		
+		Assert.assertEquals(true, true);
+		
+		System.out.println("Organization created...");
 	}
 
 }

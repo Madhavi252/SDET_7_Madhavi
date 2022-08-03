@@ -1,18 +1,22 @@
-package vTigerScenarios;
+package com.vTigerScenarios;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import com.Object.Resource.CreateOrgPage;
 import com.Object.Resource.HomePage;
 import com.Object.Resource.OrganizationInfoPage;
 import com.VTIGER.generic.BaseClassUtiity;
 import com.VTIGER.generic.FakeData;
+import com.VTIGER.generic.RetryAnalyzer;
 import com.VTIGER.generic.WebDriverUtility;
 
-public class OrgName_Create_Verifytest extends BaseClassUtiity {
+@Listeners(com.VTIGER.generic.ListenerImplementations.class)
+public class TC_2_OrgName_Create_Verifytest extends BaseClassUtiity {
 
-@Test
-	public void orgNameVerify() throws Throwable {
+@Test(groups= "smoke",retryAnalyzer = RetryAnalyzer.class)
+	public void orgNameVerifyTest() throws Throwable {
 
 		FakeData fakeData = new FakeData();
 		String orgname = fakeData.industryName();
@@ -36,11 +40,13 @@ public class OrgName_Create_Verifytest extends BaseClassUtiity {
 
 		//String s = driver.findElement(By.xpath("//span[@class='dvHeaderText']")).getText();
 		
-		String orgname1 = createOrgPage.orgVerifyText.getText();
+		String orgname1 = createOrgPage.getOrgVerifyText().getText();
 		System.out.println(orgname1);
 		
 		//Assert.assertEquals(createOrgPage.orgVerifyText.getText(), "Organization Information");
 		Assert.assertEquals(true, true);
+		
+		System.out.println("Organization created and verified...");
 
 	}
 

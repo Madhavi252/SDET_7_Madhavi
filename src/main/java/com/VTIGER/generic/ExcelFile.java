@@ -26,7 +26,7 @@ public class ExcelFile {
 	
 	public String readDataFromExcel(String path, String sheet, int row, int cell) throws Throwable {
 		
-		FileInputStream fis = new FileInputStream("../SDET7_MADHAVI/src/test/java/Scenarios/excel.xlsx");
+		FileInputStream fis = new FileInputStream(IAutoconsts.excelFile);
 		
 		Workbook book = WorkbookFactory.create(fis);
 		

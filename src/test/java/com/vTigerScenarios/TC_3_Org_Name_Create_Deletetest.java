@@ -1,17 +1,8 @@
-package vTigerScenarios;
+package com.vTigerScenarios;
 
-import java.time.Duration;
-import java.util.Random;
-
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.Object.Resource.CreateOrgPage;
@@ -19,17 +10,16 @@ import com.Object.Resource.HomePage;
 import com.Object.Resource.OrganizationInfoPage;
 import com.VTIGER.generic.BaseClassUtiity;
 import com.VTIGER.generic.FakeData;
-import com.VTIGER.generic.PropertyFile;
+import com.VTIGER.generic.RetryAnalyzer;
 import com.VTIGER.generic.WebDriverUtility;
-import com.fasterxml.jackson.databind.deser.Deserializers.Base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Org_Name_Create_Deletetest extends BaseClassUtiity{
+@Listeners(com.VTIGER.generic.ListenerImplementations.class)
+public class TC_3_Org_Name_Create_Deletetest extends BaseClassUtiity{
 
-	@Test
+	@Test(groups="regression",retryAnalyzer = RetryAnalyzer.class)
 
-	public void deleteOrgName() throws Throwable {
+	public void deleteOrgNameTest() throws Throwable {
 	
 		FakeData fakeData = new FakeData();
 		String orgname = fakeData.name();		
@@ -61,13 +51,19 @@ public class Org_Name_Create_Deletetest extends BaseClassUtiity{
 		organizationInfoPage.getSearchorgtypeDD().click();
 		
 		driverUtility.selectDD("Organization Name", organizationInfoPage.getSearchorgtypeDD());
-		organizationInfoPage.searchorgbtn.click();
+		organizationInfoPage.getSearchorgbtn().click();
 		Thread.sleep(5000);
 		
 		organizationInfoPage.getCheckBox().click();
 		organizationInfoPage.getDeletebtn().click();
 		
 		driverUtility.acceptAlert();
+		
+		boolean orgPop=organizationInfoPage.getOrgPopup().isDisplayed();
+		
+		Assert.assertEquals(orgPop, true);
+		
+		System.out.println("Organization created and deleted...");
 		
 	}
 }

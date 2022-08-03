@@ -36,8 +36,12 @@ public class OrganizationInfoPage {
 	 
 	 
 	@FindBy(name="submit")
-	public WebElement searchorgbtn;
+	private WebElement searchorgbtn;
 
+
+	public WebElement getSearchorgbtn() {
+		return searchorgbtn;
+	}
 
 	@FindBy(xpath="//a[@title='Organizations']")
 	private WebElement searchedorgname;
@@ -67,6 +71,14 @@ public class OrganizationInfoPage {
 	public WebElement getDeletebtn() {
 		return deletebtn;
 	}
+	
+	@FindBy(xpath="//span[normalize-space()='No Organization Found !']")
+	private WebElement orgPopup;
+	
+	public WebElement getOrgPopup() {
+		return orgPopup;
+	}
+	
 	
 	
 }

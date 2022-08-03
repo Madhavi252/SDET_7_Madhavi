@@ -40,8 +40,4 @@ public class LoginPage {
 		return loginbtn;
 	}
 	
-	
-	
-	
-
 }

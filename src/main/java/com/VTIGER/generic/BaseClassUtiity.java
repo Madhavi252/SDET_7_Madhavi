@@ -17,17 +17,18 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClassUtiity {
 
-	public WebDriver driver;
+	public  WebDriver driver;
+	public static WebDriver sdriver;
 	PropertyFile propertyFile = new PropertyFile();
 
-	@BeforeSuite
+	@BeforeSuite(groups= {"smoke", "regresion"})
 	//connect to database
 	public void connectDataBase() {
 		System.out.println("========DataBase connected==========");
 	}
 
 
-	@BeforeClass
+	@BeforeClass(groups= {"smoke", "regression"})
 	//Launch browser and connect to url
 	public void lanuchBrowser() throws Throwable {
 
@@ -45,14 +46,16 @@ public class BaseClassUtiity {
 			System.out.println("browser not found");
 		}
 		driver.get(propertyFile.readDatafromPropfile("url"));
-
+		sdriver=driver;
+		Thread.sleep(2000);
+		
 		WebDriverUtility webDriverUtility = new WebDriverUtility(driver);
 		webDriverUtility.pagewait();
 		webDriverUtility.maximizewindow();
 	}
 
 
-	@BeforeMethod
+	@BeforeMethod(groups= {"smoke", "regression"})
 	//login to application
 	public void loginPage() throws Throwable {
 
@@ -64,7 +67,7 @@ public class BaseClassUtiity {
 	}
 
 
-	@AfterMethod
+	@AfterMethod(groups= {"smoke", "regression"})
 	//logout to application
 	public void logoutPage() throws InterruptedException{
 		
@@ -80,14 +83,14 @@ public class BaseClassUtiity {
 	}
 
 
-	@AfterClass
+	@AfterClass(groups= {"smoke", "regression"})
 	//close browser
 	public void closeBrowser() {
 		driver.close();
 	}
 
 
-	@AfterSuite
+	@AfterSuite(groups= {"smoke", "regression"})
 	//close connection to database
 	public void closeConnectDataBase() {
 		System.out.println("-----connection with database closed----");

@@ -9,7 +9,7 @@ public class Excel_Use {
 		
 		ExcelFile excelfile = new ExcelFile();
 		
-		String data= excelfile.readDataFromExcel("../SDET7_MADHAVI/src/test/java/Scenarios/excel.xlsx", "Sheet1", 1, 1);
+		String data= excelfile.readDataFromExcel("../SDET7_MADHAVI/excel.xlsx", "Sheet1", 1, 1);
 		
 		System.out.println(data);
 	}

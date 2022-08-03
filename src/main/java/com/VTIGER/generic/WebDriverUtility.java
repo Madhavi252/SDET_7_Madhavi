@@ -1,6 +1,8 @@
 package com.VTIGER.generic;
 
 import java.time.Duration;
+import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -81,7 +83,13 @@ public class WebDriverUtility {
 	
 	public void acceptAlert() {
 		driver.switchTo().alert().accept();
-		
+	}
+	public String date() {
+		Date d = new Date();
+		int date = d.getDate();
+		long time = d.getTime();
+		String value=date+" "+time;
+		return value;
 	}
 	
 }

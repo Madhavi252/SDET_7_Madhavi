@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" >
+	<listeners>
+
+		<listener class-name="com.VTIGER.generic.ListenerImplementations"></listener>
+
+	</listeners>
+	<test thread-count="5" name="Test">
+		<classes>
+			<class name="com.vTigerScenarios.TC_1_Org_Nametest" />
+			<class name="com.vTigerScenarios.TC_2_OrgName_Create_Verifytest" />
+			<class name="com.vTigerScenarios.TC_3_Org_Name_Create_Deletetest" />
+			<class name="com.vTigerScenarios.TC_4_Contact_Create_Verifytest" />
+			<class name="com.vTigerScenarios.TC_5_Campagin_Name_Create_Deletetest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
