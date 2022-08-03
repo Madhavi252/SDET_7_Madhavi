@@ -69,7 +69,7 @@ public class BaseClassUtiity {
 
 	@AfterMethod(groups= {"smoke", "regression"})
 	//logout to application
-	public void logoutPage() throws InterruptedException{
+	public void logoutPage() throws Throwable{
 		
 		WebDriverUtility driverUtility = new WebDriverUtility(driver);
 		HomePage homePage = new HomePage(driver);
